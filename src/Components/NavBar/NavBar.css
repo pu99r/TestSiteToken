@@ -1,0 +1,54 @@
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #121825;
+  margin: 34px 25px;
+  height: 82px;
+  color: #ffffff;
+  border-radius: 24px;
+}
+
+.logo {
+  font-size: 29px;
+}
+
+.sometext {
+  margin-left: 70px;
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.iconMycompany,
+.iconAdmin {
+  margin-right: 5px;
+}
+
+.admin {
+  width: 178px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #222b44;
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+
+.adminstaus {
+  height: 50px;
+  margin-left: 10px;
+  display: flex;
+  flex-grow: 1;
+}
+
+.adminstaus1 {
+  flex-grow: 1;
+  font-size: 16px;
+  color: #616d8d;
+}
+
+.adminstaus2 {
+  width: 106px;
+  font-size: 18px;
+}
