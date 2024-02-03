@@ -27,7 +27,7 @@
 }
 
 .admin {
-  width: 178px;
+  height: 50px;
   display: flex;
   align-items: center;
   border: 1px solid #222b44;
@@ -36,19 +36,16 @@
 }
 
 .adminstaus {
-  height: 50px;
-  margin-left: 10px;
   display: flex;
-  flex-grow: 1;
+  flex-direction: column;
 }
 
 .adminstaus1 {
-  flex-grow: 1;
   font-size: 16px;
   color: #616d8d;
 }
 
 .adminstaus2 {
-  width: 106px;
   font-size: 18px;
+  margin-top: 5px;
 }
