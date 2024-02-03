@@ -9,10 +9,10 @@ const Useritem = ({
   onUserClick,
 }: {
   user: User;
-  onUserClick: (userId: string) => void;
+  onUserClick: (userId: string, userEmail: string) => void;
 }): JSX.Element => {
   const handleUserClick = () => {
-    onUserClick(user.id);
+    onUserClick(user.id , user.email);
   };
 
   return (

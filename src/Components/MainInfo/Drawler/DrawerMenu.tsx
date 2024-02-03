@@ -9,12 +9,12 @@ interface DrawerMenuProps {
 const DrawerMenu = ({
   onClose,
   userId,
+  userEmail
 }: {
   onClose: () => void;
   userId: string;
+  userEmail: string;
 }) => {
-  console.log(userId)
-
   const [loading, setLoading] = useState(true);
   const { data } = useAppSelector((store) => store.spend);
   const dispatch = useAppDispatch();
@@ -33,6 +33,7 @@ const DrawerMenu = ({
   return (
     <div className="drawer-menu">
       <div>{userId}</div>
+      <div>{userEmail}</div>
       <p>Menu content</p>
       <button onClick={onClose}>+</button>
     </div>

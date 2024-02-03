@@ -15,6 +15,7 @@ const Main = (): JSX.Element => {
   const [loading, setLoading] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [userIdOpen, setUserIdOpen] = useState("");
+  const [userEmailOpen, setUserEmailOpen] = useState("");
 
   const { data, pages } = useAppSelector((store) => store.users);
   const dispatch = useAppDispatch();
@@ -79,8 +80,9 @@ const Main = (): JSX.Element => {
   const closeDrawer = () => setIsDrawerOpen(false);
 
   const handleUserClick = (userId: string, userEmail: string) => {
-  isDrawerOpen ? console.log("g") : setUserIdOpen(userId);
-};
+    isDrawerOpen ? console.log("none") : setUserIdOpen(userId);
+    isDrawerOpen ? console.log("none") : setUserEmailOpen(userEmail);
+  };
 
   if (loading) {
     return <div className="loader"></div>;
@@ -125,7 +127,9 @@ const Main = (): JSX.Element => {
           <div key={user.id} onClick={() => openDrawer()}>
             <Useritem
               user={user}
-              onUserClick={(userId) => handleUserClick(userId, user.email)}
+              onUserClick={(userId, userEmail) =>
+                handleUserClick(userId, userEmail)
+              }
             />
           </div>
         ))}
@@ -143,7 +147,13 @@ const Main = (): JSX.Element => {
           ))}
         </div>
       </div>
-      {isDrawerOpen && <DrawerMenu onClose={closeDrawer} userId={userIdOpen} />}
+      {isDrawerOpen && (
+        <DrawerMenu
+          onClose={closeDrawer}
+          userId={userIdOpen}
+          userEmail={userEmailOpen}
+        />
+      )}
     </div>
   );
 };
