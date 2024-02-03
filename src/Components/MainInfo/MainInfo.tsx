@@ -14,7 +14,7 @@ const Main = (): JSX.Element => {
   const [sort, setSort] = useState("desc");
   const [loading, setLoading] = useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [userIdOpen, setuserIdOpen] = useState("");
+  const [userIdOpen, setUserIdOpen] = useState("");
 
   const { data, pages } = useAppSelector((store) => store.users);
   const dispatch = useAppDispatch();
@@ -78,9 +78,9 @@ const Main = (): JSX.Element => {
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
 
-  const handleUserClick = (userId: string) => {
-    isDrawerOpen ? console.log("g") : setuserIdOpen(userId);
-  };
+  const handleUserClick = (userId: string, userEmail: string) => {
+  isDrawerOpen ? console.log("g") : setUserIdOpen(userId);
+};
 
   if (loading) {
     return <div className="loader"></div>;
@@ -122,8 +122,11 @@ const Main = (): JSX.Element => {
       </div>
       <div className="Spisok">
         {data.map((user) => (
-          <div key={user.id} className="card" onClick={() => openDrawer()}>
-            <Useritem user={user} onUserClick={handleUserClick} />
+          <div key={user.id} onClick={() => openDrawer()}>
+            <Useritem
+              user={user}
+              onUserClick={(userId) => handleUserClick(userId, user.email)}
+            />
           </div>
         ))}
       </div>
