@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./MainInfo.css";
 import Useritem from "./User";
+import DrawerMenu from "./Drawler/DrawerMenu";
+
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { UsersInit } from "../../Redux/Reducers/UserSlice";
 import { HiOutlineMagnifyingGlassCircle } from "react-icons/hi2";
@@ -10,8 +12,11 @@ const Main = (): JSX.Element => {
   const [page, setPage] = useState(1);
   const [Findstring, setFindstring] = useState("");
   const [sort, setSort] = useState("desc");
-  const { data, pages } = useAppSelector((store) => store.users);
   const [loading, setLoading] = useState(true);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [userIdOpen, setuserIdOpen] = useState("");
+
+  const { data, pages } = useAppSelector((store) => store.users);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -70,6 +75,13 @@ const Main = (): JSX.Element => {
     setSort(sortOrder);
   };
 
+  const openDrawer = () => setIsDrawerOpen(true);
+  const closeDrawer = () => setIsDrawerOpen(false);
+
+  const handleUserClick = (userId: string) => {
+    isDrawerOpen ? console.log("g") : setuserIdOpen(userId);
+  };
+
   if (loading) {
     return <div className="loader"></div>;
   }
@@ -94,9 +106,15 @@ const Main = (): JSX.Element => {
         <div className="UserTokensTop">
           <div>Токены</div>
           {sort === "asc" ? (
-            <IoArrowUpOutline className="UpDownIcon" onClick={() => Sorting()} />
+            <IoArrowUpOutline
+              className="UpDownIcon"
+              onClick={() => Sorting()}
+            />
           ) : (
-            <IoArrowDownOutline className="UpDownIcon" onClick={() => Sorting()} />
+            <IoArrowDownOutline
+              className="UpDownIcon"
+              onClick={() => Sorting()}
+            />
           )}
         </div>
 
@@ -104,7 +122,9 @@ const Main = (): JSX.Element => {
       </div>
       <div className="Spisok">
         {data.map((user) => (
-          <Useritem key={user.id} user={user} />
+          <div key={user.id} className="card" onClick={() => openDrawer()}>
+            <Useritem user={user} onUserClick={handleUserClick} />
+          </div>
         ))}
       </div>
       <div className="strelki">
@@ -120,6 +140,7 @@ const Main = (): JSX.Element => {
           ))}
         </div>
       </div>
+      {isDrawerOpen && <DrawerMenu onClose={closeDrawer} userId={userIdOpen} />}
     </div>
   );
 };
