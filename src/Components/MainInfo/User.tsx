@@ -4,9 +4,15 @@ import { User } from "./types/Type";
 import { IoTrashOutline } from "react-icons/io5";
 import { HiPencilSquare } from "react-icons/hi2";
 
-const Useritem = ({user,onUserClick,} : {user: User;onUserClick : (userId: string, userEmail: string) => void}): JSX.Element => {
+const Useritem = ({
+  user,
+  onUserClick,
+}: {
+  user: User;
+  onUserClick: (userId: string, userEmail: string) => void;
+}): JSX.Element => {
   const handleUserClick = () => {
-    onUserClick(user.id , user.email);
+    onUserClick(user.id, user.email);
   };
 
   return (

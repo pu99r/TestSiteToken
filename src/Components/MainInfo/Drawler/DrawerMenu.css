@@ -57,7 +57,7 @@
 .UserDrawerSpisok {
   display: grid;
   gap: 10px;
-  text-align: center; /* Center the text */
+  text-align: center;
 }
 
 .UserDrawerCard {
@@ -71,14 +71,14 @@
 .UserDrawerCardTime {
   display: flex;
   flex-direction: column;
-  text-align: center; /* Center the text */
+  text-align: center;
 }
 .operationtext {
   font-size: 26px;
   margin: 20px 0;
 }
 .green {
-  color: #1ABB34;
+  color: #1abb34;
 }
 .yellow {
   color: rgb(245, 245, 35);
@@ -89,7 +89,5 @@
   color: #fff;
   border: 1px solid transparent;
   border-radius: 5px;
-  cursor: pointer
-
-
+  cursor: pointer;
 }

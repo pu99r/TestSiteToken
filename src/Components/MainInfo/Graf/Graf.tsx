@@ -14,7 +14,8 @@ const Graf = ({ operations }: { operations: Operation[] }): JSX.Element => {
     (transaction: Operation) => transaction.created_at
   );
   const timeArray = createdAts.map(
-    (dateTime) => dateTime.split("T")[1].split(":")[0] + ":" + dateTime.split(":")[1]
+    (dateTime) =>
+      dateTime.split("T")[1].split(":")[0] + ":" + dateTime.split(":")[1]
   );
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const Graf = ({ operations }: { operations: Operation[] }): JSX.Element => {
         y: {
           beginAtZero: true,
         },
-      }
+      },
     };
 
     if (chartRef.current) {

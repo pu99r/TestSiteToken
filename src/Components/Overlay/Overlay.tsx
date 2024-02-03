@@ -1,11 +1,7 @@
 import React from "react";
 import "./Overlay.css";
 
-interface OverlayProps {
-  onClick: () => void;
-}
-
-const Overlay: React.FC<OverlayProps> = ({ onClick }) => {
+const Overlay: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return <div className="overlay" onClick={onClick}></div>;
 };
 

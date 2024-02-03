@@ -6,7 +6,6 @@ import UserDrawer from "./DraweItem";
 import Graf from "../Graf/Graf";
 import { IoCloseSharp } from "react-icons/io5";
 
-
 const DrawerMenu = ({
   onClose,
   userId,
@@ -34,7 +33,9 @@ const DrawerMenu = ({
     <div className="drawer-menu">
       <div className="blockTextBrawer">
         <div>{userEmail}</div>
-        <button className="drawerexit" onClick={onClose}><IoCloseSharp/></button>
+        <button className="drawerexit" onClick={onClose}>
+          <IoCloseSharp />
+        </button>
       </div>
       <div className="tokstats">Использование токенов</div>
       <div className="graf">
