@@ -2,6 +2,7 @@ import "./DrawerMenu.css";
 import { useAppDispatch, useAppSelector } from "../../../Redux/store";
 import React, { useEffect, useState } from "react";
 import { SpendInit } from "../../../Redux/Reducers/SpendSlice";
+import UserDrawer from "./DraweItem"
 
 interface DrawerMenuProps {
   onClose: () => void;
@@ -9,7 +10,7 @@ interface DrawerMenuProps {
 const DrawerMenu = ({
   onClose,
   userId,
-  userEmail
+  userEmail,
 }: {
   onClose: () => void;
   userId: string;
@@ -21,21 +22,31 @@ const DrawerMenu = ({
 
   useEffect(() => {
     const fetchUsers = async (): Promise<any> => {
-      await dispatch(
-        SpendInit({ userId: userId })
-      );
+      await dispatch(SpendInit({ userId: userId }));
       setLoading(false);
     };
     fetchUsers();
   }, []);
-  
-  console.log(data);
   return (
     <div className="drawer-menu">
-      <div>{userId}</div>
-      <div>{userEmail}</div>
-      <p>Menu content</p>
-      <button onClick={onClose}>+</button>
+      <div className="blockTextBrawer">
+        <div>{userEmail}</div>
+        <button onClick={onClose}>+</button>
+      </div>
+      <div>Использование токенов</div>
+      <div className="graf">график</div>
+      <div className="operation">
+        <div>История операций</div>
+        <div className="UserDrawer">
+          <div className="UserTypeDrawer">Тип</div>
+          <div className="UserAmountDrawer">Сумма</div>
+          <div className="UserDateDrawer">Дата</div>
+        </div>
+        <div className="UserDrawerSpisok">
+          {data.map((user) => <UserDrawer Operation={user}/>)}
+         
+        </div>
+      </div>
     </div>
   );
 };

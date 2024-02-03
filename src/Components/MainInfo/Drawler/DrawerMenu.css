@@ -2,14 +2,73 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px;
+  width: 470px;
   height: 100%;
-  background-color: rgb(135, 185, 232);
+  background-color: #121825;
   box-shadow: -1px 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   z-index: 999;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.blockTextBrawer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.drawer-menu button {
-  margin-top: 10px;
+.blockTextBrawer div {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.buttonClose {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonClose:hover {
+  background-color: #2980b9;
+}
+
+.graf {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.UserDrawer {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  height: 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-weight: bold;
+  background-color: #0E0C15;
+}
+
+.UserDrawerSpisok {
+  display: grid;
+  gap: 10px;
+  text-align: center; /* Center the text */
+}
+
+.UserDrawerCard {
+  align-items: center;
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr;
+  border-radius: 5px;
+  height: 64px;
+}
+
+.UserDrawerCardTime {
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* Center the text */
 }
