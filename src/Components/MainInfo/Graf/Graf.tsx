@@ -38,7 +38,7 @@ const Graf = ({ operations }: { operations: Operation[] }): JSX.Element => {
         y: {
           beginAtZero: true,
         },
-      },
+      }
     };
 
     if (chartRef.current) {

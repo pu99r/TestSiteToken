@@ -28,6 +28,7 @@
 }
 
 .inputcard input {
+  flex: 1;
   height: 18px;
   box-sizing: border-box;
   border: none;

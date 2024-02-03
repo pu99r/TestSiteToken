@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./MainInfo.css";
 import Useritem from "./User";
 import DrawerMenu from "./Drawler/DrawerMenu";
+import Overlay from "../Overlay/Overlay";
 import { HiOutlineMagnifyingGlassCircle } from "react-icons/hi2";
 import { IoArrowDownOutline, IoArrowUpOutline } from "react-icons/io5";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
@@ -151,6 +152,7 @@ const Main = (): JSX.Element => {
           ))}
         </div>
       </div>
+      {isDrawerOpen && <Overlay onClick={closeDrawer} />}
       {isDrawerOpen && (
         <DrawerMenu
           onClose={closeDrawer}
