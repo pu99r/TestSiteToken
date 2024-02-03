@@ -10,16 +10,17 @@
   z-index: 999;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .blockTextBrawer {
+  margin-bottom: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.blockTextBrawer div {
-  font-size: 18px;
+.blockTextBrawer > div,
+.tokstats {
+  font-size: 26px;
   font-weight: bold;
 }
 
@@ -50,7 +51,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   font-weight: bold;
-  background-color: #0E0C15;
+  background-color: #0e0c15;
 }
 
 .UserDrawerSpisok {
@@ -62,7 +63,7 @@
 .UserDrawerCard {
   align-items: center;
   display: grid;
-  grid-template-columns:1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   border-radius: 5px;
   height: 64px;
 }
@@ -71,4 +72,24 @@
   display: flex;
   flex-direction: column;
   text-align: center; /* Center the text */
+}
+.operationtext {
+  font-size: 26px;
+  margin: 20px 0;
+}
+.green {
+  color: #1ABB34;
+}
+.yellow {
+  color: rgb(245, 245, 35);
+}
+.drawerexit {
+  font-size: 24px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer
+
+
 }

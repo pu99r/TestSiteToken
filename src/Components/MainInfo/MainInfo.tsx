@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./MainInfo.css";
 import Useritem from "./User";
 import DrawerMenu from "./Drawler/DrawerMenu";
-
-import { useAppDispatch, useAppSelector } from "../../Redux/store";
-import { UsersInit } from "../../Redux/Reducers/UserSlice";
 import { HiOutlineMagnifyingGlassCircle } from "react-icons/hi2";
 import { IoArrowDownOutline, IoArrowUpOutline } from "react-icons/io5";
+import { useAppDispatch, useAppSelector } from "../../Redux/store";
+import { UsersInit } from "../../Redux/Reducers/UserSlice";
 
 const Main = (): JSX.Element => {
   const [page, setPage] = useState(1);
@@ -31,49 +30,55 @@ const Main = (): JSX.Element => {
   }, []);
 
   const DowloadNew = async (index: number) => {
-    let numreal = index & 1 ? (index + 1) / 2 : index / 2;
-    let half = index % 2 !== 0;
-    setPage(index);
-    await dispatch(
-      UsersInit({
-        value: numreal,
-        sort: sort,
-        half: half,
-        string: Findstring,
-      })
-    );
-    setLoading(false);
+    if (!isDrawerOpen) {
+      let numreal = index & 1 ? (index + 1) / 2 : index / 2;
+      let half = index % 2 !== 0;
+      setPage(index);
+      await dispatch(
+        UsersInit({
+          value: numreal,
+          sort: sort,
+          half: half,
+          string: Findstring,
+        })
+      );
+      setLoading(false);
+    }
   };
 
   const handleInputChange = async (event: any) => {
-    setFindstring(event.target.value);
-    await dispatch(
-      UsersInit({
-        value: page,
-        sort: sort,
-        half: true,
-        string: event.target.value,
-      })
-    );
-    setLoading(false);
+    if (!isDrawerOpen) {
+      setFindstring(event.target.value);
+      await dispatch(
+        UsersInit({
+          value: page,
+          sort: sort,
+          half: true,
+          string: event.target.value,
+        })
+      );
+      setLoading(false);
+    }
   };
 
   const Sorting = async () => {
-    let k = page & 1 ? (page + 1) / 2 : page / 2;
-    let half = page % 2 !== 0;
-    const sortOrder = sort === "desc" ? "asc" : "desc";
+    if (!isDrawerOpen) {
+      let k = page & 1 ? (page + 1) / 2 : page / 2;
+      let half = page % 2 !== 0;
+      const sortOrder = sort === "desc" ? "asc" : "desc";
 
-    await dispatch(
-      UsersInit({
-        value: k,
-        sort: sortOrder,
-        half: half,
-        string: Findstring,
-      })
-    );
+      await dispatch(
+        UsersInit({
+          value: k,
+          sort: sortOrder,
+          half: half,
+          string: Findstring,
+        })
+      );
 
-    setLoading(false);
-    setSort(sortOrder);
+      setLoading(false);
+      setSort(sortOrder);
+    }
   };
 
   const openDrawer = () => setIsDrawerOpen(true);
@@ -83,7 +88,6 @@ const Main = (): JSX.Element => {
     isDrawerOpen ? console.log("none") : setUserIdOpen(userId);
     isDrawerOpen ? console.log("none") : setUserEmailOpen(userEmail);
   };
-
   if (loading) {
     return <div className="loader"></div>;
   }

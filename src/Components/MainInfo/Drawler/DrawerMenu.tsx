@@ -2,11 +2,11 @@ import "./DrawerMenu.css";
 import { useAppDispatch, useAppSelector } from "../../../Redux/store";
 import React, { useEffect, useState } from "react";
 import { SpendInit } from "../../../Redux/Reducers/SpendSlice";
-import UserDrawer from "./DraweItem"
+import UserDrawer from "./DraweItem";
+import Graf from "../Graf/Graf";
+import { IoCloseSharp } from "react-icons/io5";
 
-interface DrawerMenuProps {
-  onClose: () => void;
-}
+
 const DrawerMenu = ({
   onClose,
   userId,
@@ -27,24 +27,30 @@ const DrawerMenu = ({
     };
     fetchUsers();
   }, []);
+  if (loading) {
+    return <div className="loader"></div>;
+  }
   return (
     <div className="drawer-menu">
       <div className="blockTextBrawer">
         <div>{userEmail}</div>
-        <button onClick={onClose}>+</button>
+        <button className="drawerexit" onClick={onClose}><IoCloseSharp/></button>
       </div>
-      <div>Использование токенов</div>
-      <div className="graf">график</div>
+      <div className="tokstats">Использование токенов</div>
+      <div className="graf">
+        <Graf operations={data} />
+      </div>
       <div className="operation">
-        <div>История операций</div>
+        <div className="operationtext">История операций</div>
         <div className="UserDrawer">
           <div className="UserTypeDrawer">Тип</div>
           <div className="UserAmountDrawer">Сумма</div>
           <div className="UserDateDrawer">Дата</div>
         </div>
         <div className="UserDrawerSpisok">
-          {data.map((user) => <UserDrawer Operation={user}/>)}
-         
+          {data.slice(0, 5).map((user) => (
+            <UserDrawer Operation={user} key={user.id} />
+          ))}
         </div>
       </div>
     </div>
